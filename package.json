@@ -1,0 +1,16 @@
+{
+  "name": "express-app",
+  "version": "1.0.0",
+  "description": "Simple ExpressKnowledge App",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "Adebiyi David",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.22",
+    "pug": "^2.0.3"
+  }
+}
