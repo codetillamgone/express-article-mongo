@@ -3,6 +3,7 @@ html
     head
         title Knowledgebase
         link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+        link(rel='stylesheet' href='/css/stylesheet.css')
     body
         nav.navbar.navbar-expand-md.navbar-dark.bg-dark
             a.navbar-brand(href='/') CRUD Knowledgebase
@@ -18,13 +19,14 @@ html
                     input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search')
                     button.btn.btn-secondary.my-2.my-sm-0(type='submit') Search
         .container
+            != messages('message', locals)
             block content
             br
             hr
             footer
                 p Copyright &copy; 2019
         script(src="/bower_components/jquery/dist/jquery.js")                
-        script(src="/bower_components/bootstrap/dist/js/bootstrap.js")
-        
+        script(src="/bower_components/bootstrap/dist/js/bootstrap.js")      
+        script(src="/js/main.js")
         
         
