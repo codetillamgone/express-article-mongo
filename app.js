@@ -78,7 +78,9 @@ app.get('/', (req, res)=>{
 
 //Route files
 let articles = require('./routes/articles')
+let users = require('./routes/user')
 app.use('/articles', articles)
+app.use('/users', users)
 
 //Start Server
 app.listen(3000, ()=>(console.log("Server started on port 3000...")))

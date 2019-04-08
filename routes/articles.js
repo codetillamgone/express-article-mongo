@@ -3,7 +3,7 @@ const router = express.Router()
 const {check, validationResult} = require('express-validator/check')
 
 
-//Bring in Models
+//Bring in Article Model
 let Article = require('../models/article');
 
 
@@ -33,9 +33,9 @@ router.get('/add', (req, res)=>{
 
 //Add Submit POST Route
 router.post('/add',[
-    check('title').isLength({min:1}),
-    check('author').isLength({min:1}),
-    check('body').isLength({min: 1}),
+    check('title').isLength({min:1}).withMessage("Title cannot be left empty"),
+    check('author').isLength({min:1}).withMessage("Author cannot be left empty"),
+    check('body').isLength({min: 1}).withMessage("Body cannot be left empty"),
     
 ], (req, res)=>{
     
