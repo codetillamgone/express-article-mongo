@@ -1,0 +1,1 @@
+# A node app that allows CRUD operations with mongodb and Login Authentication with Passport

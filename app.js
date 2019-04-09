@@ -5,9 +5,10 @@ const bodyParser = require('body-parser')
 const {check, validationResult} = require('express-validator/check')
 const flash = require('connect-flash')
 const session = require('express-session')
+const config = require('./config/database')
 
 //Connect to database
-mongoose.connect('mongodb://localhost/express-app-db')
+mongoose.connect(config.database)
 let db = mongoose.connection;
 
 //Check Connection
