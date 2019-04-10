@@ -1,11 +1,14 @@
-const localStrategy = require('passport-local').Strategy
-const User = reqire('../models/user')
+const LocalStrategy = require('passport-local').Strategy
+const User = require('../models/user')
 const config = require('../config/database')
 const bcrypt = require('bcryptjs')
-const passport = require('passport')
 
-//Local Strategy
-passport.use(new localStrategy((username, password, done)=>{
+
+
+
+module.exports = (passport)=>{
+    //Local Strategy
+passport.use(new LocalStrategy((username, password, done)=>{
     
     //Query to match Username
     let query = {username:username};
@@ -15,7 +18,7 @@ passport.use(new localStrategy((username, password, done)=>{
             return done(null, false, {message: 'No user found'})
         }
         //Match password
-        bcrypyt.compare(password, user.password, (err, isMatch)=>{
+        bcrypt.compare(password, user.password, (err, isMatch)=>{
             if(err) throw err
             if(isMatch){
                 return done(null, user)
@@ -25,10 +28,16 @@ passport.use(new localStrategy((username, password, done)=>{
             }
         })
     })
+
+    passport.serializeUser(function(user, done) {
+        done(null, user.id);
+      });
+      
+      passport.deserializeUser(function(id, done) {
+        User.findById(id, function(err, user) {
+          done(err, user);
+        });
+      });
 }))
-
-
-module.exports = (passport)=>{
-
-    //
+   
 }
